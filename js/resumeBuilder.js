@@ -1,6 +1,6 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
- */
+*/
 
 
 
@@ -12,19 +12,53 @@ var bio = {
 	"contacts" : {
 		"email" : "<a href = 'mailto:benrotolo@gmail.com'>benrotolo@gmail.com</a>",
 		"mobile" : "<a href = 'tel:5555555555'>555-555-5555</a>",
-		"github" : "systemwide",
+		"github" : "<a href = 'https://github.com/systemwide'>systemwide</a>",
 		"location": "Athens, GA"
 	},
-	"welcomeMessage" : "Life long learner with wide array of skills and a passion for technology.",
+	"welcomeMessage" : "Life long learner with a wide array of skills and a passion for technology.",
 	"skills" : [
 	"html5", 
 	"CSS", 
 	"Javascript", 
 	"Personnel Management",  
 	"Customer Service"
-	]
+	],
 
-}
+	"display" : function(){
+
+		var formattedName = HTMLheaderName.replace("%data%", bio.name);
+		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+		var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+		var bioPic = HTMLbioPic.replace("%data%", "https://goo.gl/UvRE6i");
+		var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+
+		$("#header").prepend(formattedRole);
+		$("#header").prepend(formattedName);
+		$("#header").append(formattedWelcomeMsg);
+		$("#header").append(bioPic);
+		$("#topContacts").append(formattedEmail);
+		$("#topContacts").append(formattedMobile);
+		$("#topContacts").append(formattedGithub);
+		
+		// bio skills
+		if(bio.skills.length > 0){
+
+			$("#header").append(HTMLskillsStart);
+
+			for(s in bio.skills){
+
+				var mySkills = HTMLskills.replace("%data%", bio.skills[s]);
+
+				$("#header").append(mySkills);
+
+			}// end skills for in loop
+		}// end conditional test for bio skills
+
+	}// end bio.display() function
+
+};// end bio JSON
 
 // work JSON:
 var work = {
@@ -47,134 +81,112 @@ var work = {
 	],
 	"display" : function(){
 		for(j in work.jobs){
-		$("#workExperience").append(HTMLworkStart);
+			$("#workExperience").append(HTMLworkStart);
 
-		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[j].employer);
-		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[j].title);
+			var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[j].employer);
+			var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[j].title);
 
-		var formattedEmployerTitle = formattedEmployer + formattedTitle;
-		$(".work-entry:last").append(formattedEmployerTitle);
+			var formattedEmployerTitle = formattedEmployer + formattedTitle;
+			$(".work-entry:last").append(formattedEmployerTitle);
 
-		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[j].dates);
-		$(".work-entry:last").append(formattedDates);
+			var formattedDates = HTMLworkDates.replace("%data%", work.jobs[j].dates);
+			$(".work-entry:last").append(formattedDates);
 
-		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[j].location);
-		$(".work-entry:last").append(formattedLocation);
+			var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[j].location);
+			$(".work-entry:last").append(formattedLocation);
 
-		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[j].description);
-		$(".work-entry:last").append(formattedDescription);
+			var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[j].description);
+			$(".work-entry:last").append(formattedDescription);
 
 		}// end of loop
 	}
-};
+}; //end work JSON
 
 // education JSON:
+var education ={
+	"schools" : [
+	{
+		"name" : "University of Massachusetts at Amherst",
+		"location" : "Amherst MA",
+		"major" : "Computer Science",
+		"dates" : "2013 - 2015",
+		"url" : "<a href = 'http://www.umass.edu'> http://www.umass.edu/ </a>"
+	},
+	{
+		"name" : "Harvard Extension School",
+		"location" : "Cambridge MA",
+		"major" : "Undeclared",
+		"dates" : "2011 - 2012",
+		"url" : "http://www.extension.harvard.edu/"
+	},
+	{
+		"name" : "Unversity of Massachusetts at Lowell (Online)",
+		"location" : "Lowell MA",
+		"major" : "Undeclared",
+		"dates" : "2011 - 2012",
+		"url" : "https://continuinged.uml.edu/online/"
+	}
 
- var education ={
- 	"schools" : [
- 	{
- 		"name" : "University of Massachusetts at Amherst",
- 		"location" : "Amherst MA",
- 		"major" : "Computer Science",
- 		"dates" : "2013 - 2015",
- 		"url" : "<a href = 'http://www.umass.edu'> http://www.umass.edu/ </a>"
- 	},
- 	{
- 		"name" : "Harvard Extension School",
- 		"location" : "Cambridge MA",
- 		"major" : "Undeclared",
- 		"dates" : "2011 - 2012",
- 		"url" : "http://www.extension.harvard.edu/"
- 	},
- 	{
- 		"name" : "Unversity of Massachusetts at Lowell (Online)",
- 		"location" : "Lowell MA",
- 		"major" : "Undeclared",
- 		"dates" : "2011 - 2012",
- 		"url" : "https://continuinged.uml.edu/online/"
- 	}
+	],
+	"onlineCourses" : [
+	{
+		"title" : "Front End Web Developer",
+		"school" : "Udalocation",
+		"dates" : "2015",
+		"url" : "http://udalocation.com/" 	
+	}
+	],
+	"display" : function(){
+		for(s in education.schools){
+			$("#education").append(HTMLschoolStart);
 
- 	],
- 	"onlineCourses" : [
- 	{
- 		"title" : "Front End Web Developer",
- 		"school" : "Udalocation",
- 		"dates" : "2015",
- 		"url" : "http://udalocation.com/" 	
- 	}
- 	],
- 	"display" : function(){
- 		for(s in education.schools){
-		$("#education").append(HTMLschoolStart);
+			var formattedSchool = HTMLschoolName.replace("%data%", education.schools[s].name);
+			var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[s].dates);
+			var formattedSchoollocation = HTMLschoolLocation.replace("%data%", education.schools[s].location);
+			var formattedMajor = HTMLschoolDegree.replace("%data%", education.schools[s].major);
+			var formattedSchoolURL = " -- " + education.schools[s].url;
 
-		var formattedSchool = HTMLschoolName.replace("%data%", education.schools[s].name);
-		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[s].dates);
-		var formattedSchoollocation = HTMLschoolLocation.replace("%data%", education.schools[s].location);
-		var formattedMajor = HTMLschoolDegree.replace("%data%", education.schools[s].major);
-		var formattedSchoolURL = " -- " + education.schools[s].url;
-
-		$(".education-entry:last").append(formattedSchool);
-		$(".education-entry:last").append(formattedSchoolDates);
-		$(".education-entry:last").append(formattedSchoollocation);
-		$(".education-entry:last").append(formattedMajor);
+			$(".education-entry:last").append(formattedSchool);
+			$(".education-entry:last").append(formattedSchoolDates);
+			$(".education-entry:last").append(formattedSchoollocation);
+			$(".education-entry:last").append(formattedMajor);
 
 		}
 	}
 
- };
+}; // end education JSON
 
 var projects = {
-  "projects": [
-    {
-    "title" : "Interactive Resume",
-    "dates": "2015-2016",
-    "description" : "Interactive resume for Udacity Front End Web Developer course",
-    "image" : "http://lorempixel.com/image_output/abstract-q-c-1050-350-4.jpg"
-    }
-    ],
-  "display" : function() {
-    for (p in projects.projects) {
-      $("#projects").append(HTMLprojectStart);
+	"projects": [
+	{
+		"title" : "Interactive Resume",
+		"dates": "2015-2016",
+		"description" : "Interactive resume for Udacity Front End Web Developer course",
+		"image" : "http://placekitten.com/1050/350"
+	}
+	],
+	"display" : function() {
+		for (p in projects.projects) {
+			$("#projects").append(HTMLprojectStart);
 
-      var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[p].title);
-      var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[p].dates);
-      var formattedProjectDescrip = HTMLprojectDescription.replace("%data%", projects.projects[p].description);
-      var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[p].image);
+			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[p].title);
+			var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[p].dates);
+			var formattedProjectDescrip = HTMLprojectDescription.replace("%data%", projects.projects[p].description);
+			var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[p].image);
 
-      $(".project-entry:last").append(formattedProjectTitle);
-	  $(".project-entry:last").append(formattedProjectDates);
-	  $(".project-entry:last").append(formattedProjectDescrip);
-	  $(".project-entry:last").append(formattedProjectImage);
-      }
-    }
-  
-};
+			$(".project-entry:last").append(formattedProjectTitle);
+			$(".project-entry:last").append(formattedProjectDates);
+			$(".project-entry:last").append(formattedProjectDescrip);
+			$(".project-entry:last").append(formattedProjectImage);
+		}
+	}
+
+}; // end projects JSON
 
 // Begin implementation section 
- var formattedName = HTMLheaderName.replace("%data%", bio.name);
- var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
- var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
- var bioPic = HTMLbioPic.replace("%data%", "https://goo.gl/UvRE6i");
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-$("#header").append(formattedWelcomeMsg);
-$("#header").append(bioPic);
-
-
-// bio skills
-if(bio.skills.length > 0){
-
-	$("#header").append(HTMLskillsStart);
-
-	for(s in bio.skills){
-
-	var mySkills = HTMLskills.replace("%data%", bio.skills[s]);
-
-	$("#header").append(mySkills);
-	}// end skills for in loop
-}
-// implementation section
+bio.display();
 work.display();
 education.display();
 projects.display();
 $('#mapDiv').append(googleMap);
+
