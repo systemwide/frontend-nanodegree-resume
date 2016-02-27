@@ -41,6 +41,8 @@ var bio = {
 		$("#topContacts").append(formattedEmail);
 		$("#topContacts").append(formattedMobile);
 		$("#topContacts").append(formattedGithub);
+
+		$('#topContacts').children().clone().appendTo('#footerContacts');
 		
 		// bio skills
 		if(bio.skills.length > 0){
