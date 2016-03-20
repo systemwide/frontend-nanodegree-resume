@@ -11,11 +11,12 @@ h5,
 h6 {
   padding:0;
   margin:0;
-  font-family: "Roboto", sans-serif;
+  font-family: "<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>", sans-serif;
 }
 
 .clear-fix {
   overflow: auto;
+  color: #999;
 }
 
 .education-entry,
@@ -86,7 +87,7 @@ p {
 }
 
 a {
-  color: #1199c3;
+  color: #8598ad;
   text-decoration: none;
   margin-top: 10px;
   display: block;
@@ -95,7 +96,7 @@ a {
 .welcome-message {
   font-style: italic;
   font-size: 18px;
-  color: #f3f3f3;
+  color: #8598ad;
   line-height: 28px;
 }
 
@@ -105,7 +106,7 @@ a {
 }
 
 .orange {
-  background-color: #f5ae23;
+  background-color: #006699;
 }
 
 .orange-text {
@@ -124,12 +125,12 @@ a {
 }
 
 .dark-gray {
-  background-color: #4a4a4a;
+  background-color: #006699;
 }
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #006699;
 }
 
 .flex-box {

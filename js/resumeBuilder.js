@@ -133,9 +133,9 @@ var education ={
 	"onlineCourses" : [
 	{
 		"title" : "Front End Web Developer",
-		"school" : "Udalocation",
+		"school" : "Udacity",
 		"dates" : "2015",
-		"url" : "http://udalocation.com/" 	
+		"url" : "http://udacity.com/" 	
 	}
 	],
 	"display" : function(){
