@@ -48,7 +48,7 @@ var bio = {
 
 			$("#header").append(HTMLskillsStart);
 
-			for(s in bio.skills){
+			for(var s = 0; s < bio.skills.length; s++){
 
 				var mySkills = HTMLskills.replace(data, bio.skills[s]);
 
@@ -80,7 +80,8 @@ var work = {
 	},
 	],
 	"display" : function(){
-		for(j in work.jobs){
+		
+		for(var j = 0; j < work.jobs.length; j++){
 			$("#workExperience").append(HTMLworkStart);
 
 			var data = "%data%";
@@ -141,7 +142,7 @@ var education ={
 	}
 	],
 	"display" : function(){
-		for(s in education.schools){
+		for(var s = 0; s < education.schools.length; s++){
 			$("#education").append(HTMLschoolStart);
 
 			var data = "%data%";
@@ -172,7 +173,7 @@ var projects = {
 	],
 	"display" : function() {
 
-		for (p in projects.projects) {
+		for (var p = 0; p < projects.projects.length; p++) {
 			$("#projects").append(HTMLprojectStart);
 
 			var data = "%data%";
