@@ -110,7 +110,7 @@ var education ={
 		"name" : "University of Massachusetts at Amherst",
 		"location" : "Amherst MA",
 		"degree" : "N/A",
-		"majors" : "Computer Science",
+		"majors" : ["Computer Science"],
 		"dates" : "2013 - 2015",
 		"url" : "<a href = 'http://www.umass.edu'> http://www.umass.edu/ </a>"
 	},
@@ -118,7 +118,7 @@ var education ={
 		"name" : "Harvard Extension School",
 		"location" : "Cambridge MA",
 		"degree" : "N/A",
-		"majors" : "Undeclared",
+		"majors" : ["Undeclared"],
 		"dates" : "2011 - 2012",
 		"url" : "http://www.extension.harvard.edu/"
 	},
@@ -126,7 +126,7 @@ var education ={
 		"name" : "Unversity of Massachusetts at Lowell (Online)",
 		"location" : "Lowell MA",
 		"degree" : "N/A",
-		"majors" : "Undeclared",
+		"majors" : ["Undeclared"],
 		"dates" : "2011 - 2012",
 		"url" : "https://continuinged.uml.edu/online/"
 	}
@@ -167,13 +167,11 @@ var projects = {
 		"title" : "Interactive Resume",
 		"dates": "2015-2016",
 		"description" : "Interactive resume for Udacity Front End Web Developer course",
-		"images" : [
-		"http://placekitten.com/1050/350",
-
-		]
+		"images" : ["http://placekitten.com/1050/350"]
 	}
 	],
 	"display" : function() {
+
 		for (p in projects.projects) {
 			$("#projects").append(HTMLprojectStart);
 
@@ -182,7 +180,7 @@ var projects = {
 			var formattedProjectTitle = HTMLprojectTitle.replace(data, projects.projects[p].title);
 			var formattedProjectDates = HTMLprojectDates.replace(data, projects.projects[p].dates);
 			var formattedProjectDescrip = HTMLprojectDescription.replace(data, projects.projects[p].description);
-			var formattedProjectImage = HTMLprojectImage.replace(data, projects.projects[p].images[0]);
+			var formattedProjectImage = HTMLprojectImage.replace(data, projects.projects[p].images);
 
 			$(".project-entry:last").append(formattedProjectTitle);
 			$(".project-entry:last").append(formattedProjectDates);
